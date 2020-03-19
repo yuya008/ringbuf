@@ -1,4 +1,4 @@
-package ringbuffer
+package ringbuf
 
 import (
 	"errors"
@@ -8,8 +8,8 @@ import (
 
 var (
 	ErrTooManyDataToWrite = errors.New("too many data to write")
-	ErrIsFull             = errors.New("ringbuffer is full")
-	ErrIsEmpty            = errors.New("ringbuffer is empty")
+	ErrIsFull             = errors.New("ring buffer is full")
+	ErrIsEmpty            = errors.New("ring buffer is empty")
 )
 
 type RingBuf struct {
@@ -21,7 +21,7 @@ type RingBuf struct {
 	mu     sync.Mutex
 }
 
-func New(size int) *RingBuf {
+func NewRingBuf(size int) *RingBuf {
 	return &RingBuf{
 		buf:  make([]byte, size),
 		size: size,
